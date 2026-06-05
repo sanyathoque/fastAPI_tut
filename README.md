@@ -1,6 +1,16 @@
-# FastAPI SQLAlchemy API
+# FastAPI Photo/Video Sharing API
 
-Backend-only FastAPI server intended for a React frontend. It supports common REST requests (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`) and uses SQLAlchemy for database access.
+Backend-only FastAPI server based on `techwithtim/FastAPIPhotoVideoSharing`.
+
+The frontend file from that repo was intentionally not included.
+
+## Features
+
+- User registration and JWT login with `fastapi-users`
+- SQLite database with async SQLAlchemy
+- Image/video upload endpoint using ImageKit
+- Authenticated feed endpoint
+- Delete-post endpoint that only allows the owner to delete
 
 ## Setup
 
@@ -11,10 +21,18 @@ pip install -r requirements.txt
 Copy-Item .env.example .env
 ```
 
+Fill in your ImageKit values in `.env`:
+
+```env
+IMAGEKIT_PRIVATE_KEY=
+IMAGEKIT_PUBLIC_KEY=
+IMAGEKIT_URL=
+```
+
 ## Run
 
 ```powershell
-python -m uvicorn app.main:app --reload
+python main.py
 ```
 
 API docs:
@@ -24,18 +42,10 @@ API docs:
 
 ## Example Endpoints
 
-- `GET /health`
-- `GET /api/v1/users`
-- `POST /api/v1/users`
-- `GET /api/v1/users/{user_id}`
-- `PUT /api/v1/users/{user_id}`
-- `PATCH /api/v1/users/{user_id}`
-- `DELETE /api/v1/users/{user_id}`
-- `GET /api/v1/posts`
-- `POST /api/v1/posts`
-- `GET /api/v1/posts/{post_id}`
-- `PUT /api/v1/posts/{post_id}`
-- `PATCH /api/v1/posts/{post_id}`
-- `DELETE /api/v1/posts/{post_id}`
-
-SQLite is used by default. To switch databases, update `DATABASE_URL` in `.env`.
+- `POST /auth/register`
+- `POST /auth/jwt/login`
+- `GET /users/me`
+- `PATCH /users/me`
+- `POST /upload`
+- `GET /feed`
+- `DELETE /posts/{post_id}`
