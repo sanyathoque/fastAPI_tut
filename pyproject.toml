@@ -1,7 +1,7 @@
 [project]
-name = "fastapi-photo-video-sharing-backend"
+name = "fastapi-tutorial"
 version = "0.1.0"
-description = "Backend-only FastAPI photo/video sharing API"
+description = "FastAPI tutorial project with posts, uploads, and feed endpoints"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
